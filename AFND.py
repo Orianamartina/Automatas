@@ -1,17 +1,10 @@
-from AFD import AFDNode
-from Node import Node
+from AFD import AFDState
+from State import State
 from Rule import Rule
 from FiniteAutomata import FiniteAutomata
 
 
-class AFNDNode(Node):
-    def __init__(self, name):
-        super().__init__(name)
-        self.rules = []
-
-    def set_rules(self, rules):
-        self.rules = rules
-
+class AFNDState(State):
     def transition(self, input):
         for rule in self.rules:
             if rule.transition(input) is not None:

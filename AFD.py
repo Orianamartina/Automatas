@@ -1,8 +1,8 @@
-from Node import Node
+from State import State
 from Rule import Rule
 from FiniteAutomata import FiniteAutomata
 
-class AFDNode(Node):
+class AFDState(State):
     def transition(self, input):
         for rule in self.rules:
             if rule.transition(input) is not None:
@@ -15,7 +15,6 @@ class AFD(FiniteAutomata):
         self.current_state = initial_state
         self.input = input
     
-
     def run(self):
         try:
             for character in self.input:

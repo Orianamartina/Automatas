@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
-class Node(ABC):
+class State(ABC):
     """
-    Abstract base class for automata nodes.
-    Defines the common interface that all node implementations must follow.
+    Abstract base class for automata states.
+    Defines the common interface that all state implementations must follow.
     """
     
     def __init__(self, name):
@@ -22,7 +22,7 @@ class Node(ABC):
             input: The input character/symbol for the transition
             
         Returns:
-            The next node/state after the transition, or None if no valid transition
+            The next state after the transition, or None if no valid transition
             
         Raises:
             Exception: If no valid transition is found for the input
