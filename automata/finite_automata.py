@@ -7,11 +7,14 @@ class FiniteAutomata(ABC):
     """
     
     @abstractmethod
-    def run(self):
+    def run(self, input):
         """
         Execute the automata on the input string.
         Must be implemented by subclasses.
         
+        Args:
+            input (str): The input string to process
+            
         Returns:
             The final state(s) after processing the input, or None if error occurs
         """
@@ -28,15 +31,6 @@ class FiniteAutomata(ABC):
         """
         pass
     
-    def get_input(self):
-        """
-        Get the input string.
-        
-        Returns:
-            str: The input string
-        """
-        return self.input
-    
     def get_current_state(self):
         """
         Get the current state(s).
@@ -44,4 +38,4 @@ class FiniteAutomata(ABC):
         Returns:
             The current state(s)
         """
-        return self.current_state
+        return getattr(self, 'current_state', None) or getattr(self, 'current_states', None)

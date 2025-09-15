@@ -28,3 +28,25 @@ class State(ABC):
             Exception: If no valid transition is found for the input
         """
         pass
+
+
+class AFDState(State):
+    """Deterministic Finite Automaton State"""
+    
+    def transition(self, input):
+        for rule in self.rules:
+            if rule.transition(input) is not None:
+                return rule.transition(input)
+        raise Exception('Missing rule for input: ' + input + ' in state: ' + self.name)
+
+
+class AFNDState(State):
+    """Non-deterministic Finite Automaton State"""
+    
+    def transition(self, input):
+        new_states = []
+        for rule in self.rules:
+            if rule.transition(input) is not None:
+                new_states.append(rule.transition(input))
+        return new_states
+        raise Exception('Transition failed, string not accepted')

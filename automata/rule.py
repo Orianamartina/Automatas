@@ -1,4 +1,6 @@
 class Rule:
+    """Represents a transition rule in a finite automaton"""
+    
     def __init__(self, final_state, condition):
         self.final_state = final_state
         self.condition = condition
